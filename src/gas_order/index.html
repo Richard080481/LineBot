@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>從 LIFF 取得 LINE ID 並填寫 Google 表單</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+    <h1>正在跳轉...</h1>
+    <script>
+        // Google 表單的 URL 和欄位名稱
+        const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLScoz81okYm5-kWEMyK7MYoMJnT21323PA8P7e1DYy6OYeMP2A/viewform";
+        const userIDEntry = "entry.551850678"; // LINE ID 對應的欄位
+        const hourEntry = "entry.1507806357_hour"; // 小時欄位
+        const minuteEntry = "entry.1507806357_minute"; // 分鐘欄位
+        const yearEntry = "entry.1507806357_year"; // 年份欄位
+        const monthEntry = "entry.1507806357_month"; // 月份欄位
+        const dayEntry = "entry.1507806357_day"; // 日期欄位
+
+        async function main() {
+            try {
+                // 初始化 LIFF
+                await liff.init({ liffId: "2006819171-5b9j0pqw" });
+
+                // 如果使用者尚未登入，進行登入
+                if (!liff.isLoggedIn()) {
+                    liff.login();
+                }
+
+                // 獲取使用者資料與當前時間
+                const profile = await liff.getProfile();
+                const userId = profile.userId;
+
+                const now = new Date();
+                const hour = now.getHours();
+                const minute = now.getMinutes();
+                const year = now.getFullYear();
+                const month = now.getMonth() + 1; // 月份從 0 開始計算
+                const day = now.getDate();
+
+                // 組合預填的 Google 表單 URL
+                const filledFormURL = `${googleFormURL}?${userIDEntry}=${encodeURIComponent(userId)}`
+                    + `&${hourEntry}=${hour}&${minuteEntry}=${minute}`
+                    + `&${yearEntry}=${year}&${monthEntry}=${month}&${dayEntry}=${day}`;
+
+                // 跳轉到預填的 Google 表單
+                window.location.href = filledFormURL;
+            } catch (err) {
+                console.error("初始化 LIFF 或獲取資料時發生錯誤：", err);
+            }
+        }
+
+        main();
+    </script>
+</body>
+</html>
