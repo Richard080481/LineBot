@@ -1,85 +1,135 @@
+/* General Body Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #fdfdfd;
+    color: #333;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
 }
 
+/* Container Styles */
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+    width: 85%;
+    margin: 0 auto;
     padding: 20px;
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
 }
 
+/* Header Styles */
 header {
     text-align: center;
-    padding: 20px 0;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2em;
-    color: #0056b3;
+    color: #000;
 }
 
+/* Navigation Styles */
 .contents {
-    margin: 20px 0;
-    padding: 15px;
-    background: #f2f2f2;
+    background-color: #e4e4d5;
+    padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    margin: 20px 0;
 }
 
 .contents h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    border-bottom: 1px solid #999;
 }
 
 .contents ul {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
 }
 
 .contents ul li {
-    margin: 5px 0;
+    margin: 8px 0;
 }
 
-.contents ul ul {
-    padding-left: 20px;
+.contents a {
+    color: #007acc;
+    text-decoration: none;
 }
 
-main h2, main h3 {
+.contents a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+main h2 {
+    border-bottom: 1px solid #333;
     color: #333;
-    border-bottom: 2px solid #0056b3;
-    padding-bottom: 5px;
 }
 
-.image-example {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.image-example img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
+/* Preformatted Code Styling for Monokai Light */
 pre {
-    background: #272822;
-    color: #f8f8f2;
+    background: #e4e4d5;  /* Light background color */
+    color: #2d2d2d;  /* Dark text color */
     padding: 15px;
     border-radius: 5px;
+    border: 1px solid #ddd;
     overflow-x: auto;
 }
 
+/* Syntax Highlighting Styles */
 pre code {
+    background: #f7f7f7;
     font-family: "Courier New", Courier, monospace;
-    font-size: 1em;
+    white-space: pre-wrap; /* Wrap text for long lines */
+}
+
+pre .hljs {
+    background: #f7f7f7;
+}
+
+/* Monokai Light Colors for Code */
+.hljs {
+    background: #f7f7f7;
+    color: #2d2d2d;
+}
+
+.hljs-keyword {
+    color: #f92672;  /* Pink for keywords */
+}
+
+.hljs-string {
+    /* color: #e6db74;  Light Yellow for strings */
+}
+
+.hljs-number {
+    color: #ae81ff;  /* Purple for numbers */
+}
+
+.hljs-comment {
+    color: #75715e;  /* Gray/Green for comments */
+    font-style: italic;
+}
+
+.hljs-type {
+    color: #418b99;  /* Light Blue for types */
+}
+
+.hljs-variable {
+    color: #7eab24;  /* Green for variables */
+}
+
+.hljs-function {
+    color: #7eab24;  /* Green for functions */
+}
+
+.hljs-attr {
+    color: #7eab24;  /* Green for attributes */
+}
+
+.hljs-tag {
+    color: #f92672;  /* Pink for tags */
+}
+
+.hljs-punctuation {
+    color: #f8f8f2;  /* Light Grey for punctuation */
+}
+
+/* Ensure line height of code blocks remains readable */
+.hljs, .hljs-keyword, .hljs-string, .hljs-number, .hljs-comment, .hljs-type, .hljs-variable, .hljs-function, .hljs-attr, .hljs-tag, .hljs-punctuation {
+    line-height: 1.6;
 }

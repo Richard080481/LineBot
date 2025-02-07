@@ -1,8 +1,0 @@
-執行
-python manage.py runserver
-
-執行
-ngrok http 8000
-
-更換webhook url
-https://developers.line.biz/console/channel/2006632841/messaging-api

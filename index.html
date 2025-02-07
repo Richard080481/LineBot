@@ -1,65 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ray Tracing in One Weekend</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三小時內做出Line自動點餐機器人</title>
+  <link rel="icon" href="assets/" type="image/png">
+  <!-- GitHub Theme CDN for Highlight.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Ray Tracing in One Weekend</h1>
-            <p><strong>Peter Shirley, Trevor David Black, Steve Hollasch</strong></p>
-            <p>Version 4.0.1, 2024-08-31</p>
-            <p>&copy; 2018-2024 Peter Shirley. All rights reserved.</p>
-        </header>
+  <div class="container">
+    <header>
+      <h1>三小時內做出 Line 自動點餐機器人</h1>
+      <p><strong>王詠翔，Yung-Hsiang Wang (Richard)</strong></p>
+      <p>Last updated on 2025-02-05</p>
+      <p>All rights reserved.</p>
+    </header>
 
-        <nav class="contents">
-            <h2>Contents</h2>
-            <ul>
-                <li>1. Overview</li>
-                <li>2. Output an Image
-                    <ul>
-                        <li>2.1 The PPM Image Format</li>
-                        <li>2.2 Creating an Image File</li>
-                        <li>2.3 Adding a Progress Indicator</li>
-                    </ul>
-                </li>
-                <li>3. The vec3 Class
-                    <ul>
-                        <li>3.1 Color Utility Functions</li>
-                    </ul>
-                </li>
-                <li>4. Rays, a Simple Camera, and Background</li>
-                <li>5. Adding a Sphere</li>
-                <li>6. Surface Normals and Multiple Objects</li>
-            </ul>
-        </nav>
+    <nav class="contents">
+      <h2>Contents</h2>
+      <ul>
+        <li><a href="#overview">1. Overview</a></li>
+        <li><a href="#output-image">2. 如何處理訂單訊息</a></li>
+        <li><a href="#hash-function">3. 雜湊函數與訂單編號生成</a></li>
+        <li><a href="#line-api">4. 使用 Line API 發送訊息</a></li>
+        <li><a href="#form-handler">5. Google 表單回應處理</a></li>
+      </ul>
+    </nav>
 
-        <main>
-            <h2>2. Output an Image</h2>
-            <h3>2.1 The PPM Image Format</h3>
-            <p>Whenever you start a renderer, you need a way to see an image. The most straightforward way is to write it to a file...</p>
-            <div class="image-example">
-                <figure>
-                    <img src="ppm-example.png" alt="PPM Example">
-                    <figcaption>Figure 1: PPM Example</figcaption>
-                </figure>
-            </div>
+    <main>
+      <h2 id="overview">1. Overview</h2>
+      <p>本教學將帶你一步步實現一個能接收 Google 表單訂單、處理訊息，並透過 LINE Bot 自動通知的簡單系統。</p>
 
-            <h3>Let’s make some C++ code to output such a thing:</h3>
-            <pre><code>#include &lt;iostream&gt;
-
-int main() {
-    // Image
-    int image_width = 256;
-    int image_height = 256;
-
-    // Render
-    return 0;
+      <h2 id="output-image">2. 如何處理訂單訊息</h2>
+      <pre><code>function getOrderNumber(date, phoneNumber, orderDetail)
+{
+  return generateHashDateString(date, phoneNumber, orderDetail);
 }</code></pre>
-        </main>
-    </div>
+
+      <h2 id="hash-function">3. 雜湊函數與訂單編號生成</h2>
+      <pre><code>function hashCode(str)
+{
+  let hash = 0;
+  for (let i = 0; i < str.length; i++)
+  {
+    const char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash |= 0;
+  }
+  hash = hash > 0 ? hash : -hash;
+  return hash.toString(16).slice(-3);
+}</code></pre>
+
+      <h2 id="line-api">4. 使用 Line API 發送訊息</h2>
+      <pre><code>function sendLineMessage(message, userID)
+{
+  const url = "https://api.line.me/v2/bot/message/push";
+
+  const payload =
+  {
+    to: userID,
+    messages: [{ type: "text", text: message }]
+  };
+
+  const options =
+  {
+    method: "post",
+    headers:
+    {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${LINE_TOKEN}`
+    },
+    payload: JSON.stringify(payload)
+  };
+
+  UrlFetchApp.fetch(url, options);
+}</code></pre>
+
+      <h2 id="form-handler">5. Google 表單回應處理</h2>
+      <pre><code>function onFormSubmit(e)
+{
+  try
+  {
+    const responses = e.namedValues;
+    const userID = responses["LINE認證碼"][0];
+    const userPhone = responses["連絡電話"][0];
+    const orderDetail = "瓦斯訂購內容";
+
+    const message = "訂單成立！編號：" + getOrderNumber("2025/01/24", userPhone, orderDetail);
+    sendLineMessage(message, userID);
+  }
+  catch (err)
+  {
+    console.error("處理表單回應時出錯：", err);
+  }
+}</code></pre>
+    <h2 id="summary">附錄、完整程式碼</h2>
+	<a href="code/line_bot.js">Google Apps Script Code</a>
+    </main>
+  </div>
 </body>
 </html>
