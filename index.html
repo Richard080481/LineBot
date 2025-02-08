@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>三小時內做出Line自動點餐機器人</title>
   <link rel="icon" href="assets/favicon.jpg" type="image/jpg">
-  <!-- GitHub Theme CDN for Highlight.js -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>
@@ -24,11 +23,33 @@
     <nav class="contents">
       <h2>Contents</h2>
       <ul>
-        <li><a href="#overview">1. Overview</a></li>
-        <li><a href="#output-image">2. 如何處理訂單訊息</a></li>
-        <li><a href="#hash-function">3. 雜湊函數與訂單編號生成</a></li>
-        <li><a href="#line-api">4. 使用 Line API 發送訊息</a></li>
-        <li><a href="#form-handler">5. Google 表單回應處理</a></li>
+        <li>
+          <a class="contents_level1" href="#overview">1. 簡介</a>
+          <!-- <ul>
+            <a><li>1.1 Description of Overview</li></a>
+          </ul> -->
+        </li>
+        <li>
+          <a class="contents_level1" href="#output-image">2. 設置 LINE 開發者帳號與建立 LINE Bot</a>
+          <ul>
+            <a><li>2.1 註冊 LINE 開發者帳號</li></a>
+            <a><li>2.2 設置 LINE 開發者帳號與建立 LINE Bot</li></a>
+            <a><li>2.3 創建 LINE Messaging API Channel</li></a>
+            <a><li>2.4 取得 LINE Bot 的 Channel Access Token 和 Secret</li></a>
+            <a><li>2.5 配置 Webhook URL 與連接 LINE Bot</li></a>
+          </ul>
+        </li>
+        <li>
+          <a class="contents_level1" href="#hash-function">3. 創建 Google 表單訂單系統</a>
+          <ul>
+            <a><li>設置 LINE 開發者帳號與建立 LINE Bot</li></a>
+            <a><li>創建 LINE Messaging API Channel</li></a>
+            <a><li>取得 LINE Bot 的 Channel Access Token 和 Secret</li></a>
+            <a><li>配置 Webhook URL 與連接 LINE Bot</li></a>
+          </ul>
+        </li>
+        <li><a class="contents_level1" href="#line-api">4. 使用 Line API 發送訊息</a></li>
+        <li><a class="contents_level1" href="#form-handler">5. Google 表單回應處理</a></li>
       </ul>
     </nav>
 

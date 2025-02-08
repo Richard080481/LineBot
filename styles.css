@@ -1,135 +1,149 @@
 /* General Body Styles */
 body {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    background-color: #fdfdfd;
-    color: #333;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 /* Container Styles */
 .container {
-    width: 85%;
-    margin: 0 auto;
-    padding: 20px;
-    background: #ffffff;
+  width: 85%;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+}
+
+.contents_level1 {
+  font-weight: 600;
+}
+
+/* Add indentation to nested ordered list */
+ul ul {
+  margin-left: 20px; /* Adjust the value to control the indentation */
+}
+
+/* Optionally, you can adjust the margin for the list items inside the nested list */
+ul ul li {
+  margin-left: 10px; /* Adjust the value to control sub-list item indentation */
 }
 
 /* Header Styles */
 header {
-    text-align: center;
+  text-align: center;
 }
 
 header h1 {
-    color: #000;
+  color: #000;
 }
 
 /* Navigation Styles */
 .contents {
-    background-color: #e4e4d5;
-    padding: 20px;
-    border: 1px solid #ddd;
-    margin: 20px 0;
+  background-color: #e4e4d5;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin: 20px 0;
 }
 
 .contents h2 {
-    border-bottom: 1px solid #999;
+  border-bottom: 1px solid #999;
 }
 
 .contents ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .contents ul li {
-    margin: 8px 0;
+  margin: 8px 0;
 }
 
 .contents a {
-    color: #007acc;
-    text-decoration: none;
+  color: #007acc;
+  text-decoration: none;
 }
 
 .contents a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Main Content */
 main h2 {
-    border-bottom: 1px solid #333;
-    color: #333;
+  border-bottom: 1px solid #333;
+  color: #333;
 }
 
 /* Preformatted Code Styling for Monokai Light */
 pre {
-    background: #e4e4d5;  /* Light background color */
-    color: #2d2d2d;  /* Dark text color */
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    overflow-x: auto;
+  background: #e4e4d5;  /* Light background color */
+  color: #2d2d2d;  /* Dark text color */
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  overflow-x: auto;
 }
 
 /* Syntax Highlighting Styles */
 pre code {
-    background: #f7f7f7;
-    font-family: "Courier New", Courier, monospace;
-    white-space: pre-wrap; /* Wrap text for long lines */
+  background: #f7f7f7;
+  font-family: "Courier New", Courier, monospace;
+  white-space: pre-wrap; /* Wrap text for long lines */
 }
 
 pre .hljs {
-    background: #f7f7f7;
+  background: #f7f7f7;
 }
 
 /* Monokai Light Colors for Code */
 .hljs {
-    background: #f7f7f7;
-    color: #2d2d2d;
+  background: #f7f7f7;
+  color: #2d2d2d;
 }
 
 .hljs-keyword {
-    color: #f92672;  /* Pink for keywords */
+  color: #f92672;  /* Pink for keywords */
 }
 
 .hljs-string {
-    /* color: #e6db74;  Light Yellow for strings */
+  /* color: #e6db74;  Light Yellow for strings */
 }
 
 .hljs-number {
-    color: #ae81ff;  /* Purple for numbers */
+  color: #ae81ff;  /* Purple for numbers */
 }
 
 .hljs-comment {
-    color: #75715e;  /* Gray/Green for comments */
-    font-style: italic;
+  color: #75715e;  /* Gray/Green for comments */
+  font-style: italic;
 }
 
 .hljs-type {
-    color: #418b99;  /* Light Blue for types */
+  color: #418b99;  /* Light Blue for types */
 }
 
 .hljs-variable {
-    color: #7eab24;  /* Green for variables */
+  color: #7eab24;  /* Green for variables */
 }
 
 .hljs-function {
-    color: #7eab24;  /* Green for functions */
+  color: #7eab24;  /* Green for functions */
 }
 
 .hljs-attr {
-    color: #7eab24;  /* Green for attributes */
+  color: #7eab24;  /* Green for attributes */
 }
 
 .hljs-tag {
-    color: #f92672;  /* Pink for tags */
+  color: #f92672;  /* Pink for tags */
 }
 
 .hljs-punctuation {
-    color: #f8f8f2;  /* Light Grey for punctuation */
+  color: #f8f8f2;  /* Light Grey for punctuation */
 }
 
 /* Ensure line height of code blocks remains readable */
 .hljs, .hljs-keyword, .hljs-string, .hljs-number, .hljs-comment, .hljs-type, .hljs-variable, .hljs-function, .hljs-attr, .hljs-tag, .hljs-punctuation {
-    line-height: 1.6;
+  line-height: 1.6;
 }
